@@ -9,20 +9,22 @@ import java.util.stream.Stream;
 
 public class ReduceExample {
     public static void main(String[] args) {
-        //Stream<String> stream = Arrays.asList("Juan", "María", "Carlos", "Carlos").stream();
-       Stream<String> stream = new ArrayList<String>().stream();
+        // Stream<String> stream = Arrays.asList("Juan", "María", "Carlos", "Carlos").stream();
+        Stream<String> stream = new ArrayList<String>().stream();
         // Ordenará los String en orden alfabético
-        Optional<String> allNames = stream
+        String allNames = stream
                 .distinct()
                 .sorted()
-                .reduce((n1, n2) -> n1  + ", " + n2);
+                .reduce((n1, n2) -> n1 + ", " + n2)
+                .orElse("");
 
-        if(allNames.isPresent()) {
-            System.out.println(allNames.get());
-        } else {
-            System.out.println("No hay valores");
+        System.out.println(allNames);
+        // Ejemplo de uso de forEach para concatenar los nombres separados por comas
+        Stream<String> names = Arrays.asList("Juan", "María", "Carlos").stream();
+        final StringBuilder sentence = new StringBuilder();
 
-        }
+        names.forEach(v -> sentence.append(" " + v));
 
+        System.out.println(sentence.toString());
     }
 }

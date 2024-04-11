@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,10 +21,17 @@ public class FlatMapExample {
         );
 
         // El mapeo genera un Stream<Integer> que luego es recolectado en una List<Ingeger>
-        passengers
+        List<Product> products = Arrays.asList(
+                new Product(1, "tornillo", new HashSet<>(Arrays.asList("Ferretería", "Tornillo"))),
+                new Product(2, "tuerca", new HashSet<>(Arrays.asList("Ferretería", "Tuerca"))),
+                new Product(3, "lápiz", new HashSet<>(Arrays.asList("Papelería")))
+        );
+
+        Set<String> tags = products
                 .stream()
-                .filter(p -> p.getFlightId() == 1)
-                .flatMap(passenger -> passenger.getLuggages().stream())
-                .forEach(System.out::println);
+                .flatMap(product -> product.getTags().stream())
+                .collect(Collectors.toSet());
+
+        System.out.println(tags);
     }
 }

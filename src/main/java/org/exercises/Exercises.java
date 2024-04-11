@@ -13,10 +13,13 @@ public class Exercises {
                 .forEach(System.out::println);
 
         System.out.println("El primero es " + first(names));
+
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4);
+        System.out.println("El primero es " + first(numbers));
     }
 
-    public static String first(List<String> names) {
-        Optional<String> firstNameOpt = names
+    public static <T> T first(List<T> names) {
+        Optional<T> firstNameOpt = names
                 .stream()
                 .findFirst();
 
