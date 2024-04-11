@@ -1,8 +1,11 @@
 package org.exercises;
 
+import org.example.Student;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class Exercises {
     public static void main(String[] args) {
@@ -24,6 +27,14 @@ public class Exercises {
                 .findFirst();
 
         return firstNameOpt.orElse(null);
+    }
+
+
+    public static List<String> mapToEmails(List<Student> students) {
+        return students
+                .stream()
+                .map(student -> student.getEmail())
+                .collect(Collectors.toList());
     }
 
 }
