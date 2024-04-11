@@ -37,4 +37,11 @@ public class Exercises {
                 .collect(Collectors.toList());
     }
 
+    public static List<Student> filterByZipCode(List<Student> students, int zipCode) {
+        return students
+                .stream()
+                .filter(student -> student.getZipCode() == zipCode)
+                .collect(Collectors.toList());
+    }
+
 }
