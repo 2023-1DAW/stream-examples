@@ -44,4 +44,17 @@ public class Exercises {
                 .collect(Collectors.toList());
     }
 
+    public static double sum(List<Double> numbers) {
+        return numbers
+                .stream()
+                .reduce(0d, (a, b) -> a + b);
+    }
+
+    public static Optional<Double> average(List<Double> numbers) {
+        return numbers
+                .stream()
+                .reduce((a, b) -> a + b)
+                .map(sum -> sum / numbers.size());
+    }
+
 }
