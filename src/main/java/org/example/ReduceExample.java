@@ -19,6 +19,14 @@ public class ReduceExample {
                 .orElse("");
 
         System.out.println(allNames);
+        var nombresMayusculas = stream
+                // Lambda de tipo (String) -> String
+                .map(
+                        nombre -> {
+                            String upper = nombre.toUpperCase();
+                            return upper;
+                        }
+                );
         // Ejemplo de uso de forEach para concatenar los nombres separados por comas
         Stream<String> names = Arrays.asList("Juan", "María", "Carlos").stream();
         final StringBuilder sentence = new StringBuilder();

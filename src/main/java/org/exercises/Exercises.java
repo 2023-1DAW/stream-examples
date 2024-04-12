@@ -57,4 +57,16 @@ public class Exercises {
                 .map(sum -> sum / numbers.size());
     }
 
+
+    public static boolean areBiggerThan100(List<Double> numbers) {
+        return numbers.stream().allMatch(n -> n > 100);
+    }
+
+    public static boolean someBiggerThan100(List<Double> numbers) {
+        return numbers.stream().anyMatch(n -> n > 100);
+    }
+
+    public static boolean noneBiggerThan100(List<Double> numbers) {
+        return numbers.stream().noneMatch(n -> n > 100);
+    }
 }
