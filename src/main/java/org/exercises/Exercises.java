@@ -57,6 +57,18 @@ public class Exercises {
                 .map(sum -> sum / numbers.size());
     }
 
+    public static Optional<Double> max(List<Double> numbers) {
+        return numbers
+                .stream()
+                .max((a, b) -> a.compareTo(b));
+    }
+
+    public static Optional<Double> min(List<Double> numbers) {
+        return numbers
+                .stream()
+                .min((a, b) -> a.compareTo(b));
+    }
+
 
     public static boolean areBiggerThan100(List<Double> numbers) {
         return numbers.stream().allMatch(n -> n > 100);
