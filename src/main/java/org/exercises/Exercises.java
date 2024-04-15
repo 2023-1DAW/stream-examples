@@ -2,9 +2,7 @@ package org.exercises;
 
 import org.example.Student;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Exercises {
@@ -81,4 +79,13 @@ public class Exercises {
     public static boolean noneBiggerThan100(List<Double> numbers) {
         return numbers.stream().noneMatch(n -> n > 100);
     }
+
+    public List<Double> junction(List<Double> numbers1 , List<Double> numbers2) {
+        Set<Double> numbers2Set = new HashSet<>(numbers2);
+        return numbers1
+                .stream()
+                .filter(number -> numbers2Set.contains(number))
+                .collect(Collectors.toList());
+    }
+
 }
