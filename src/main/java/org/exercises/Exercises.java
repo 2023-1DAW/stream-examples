@@ -1,5 +1,7 @@
 package org.exercises;
 
+import org.example.Order;
+import org.example.OrderItem;
 import org.example.Student;
 
 import java.util.*;
@@ -80,7 +82,7 @@ public class Exercises {
         return numbers.stream().noneMatch(n -> n > 100);
     }
 
-    public List<Double> junction(List<Double> numbers1 , List<Double> numbers2) {
+    public List<Double> junction(List<Double> numbers1, List<Double> numbers2) {
         Set<Double> numbers2Set = new HashSet<>(numbers2);
         return numbers1
                 .stream()
@@ -88,4 +90,21 @@ public class Exercises {
                 .collect(Collectors.toList());
     }
 
+    public List<Double> getPrices(List<Order> orders) {
+        return orders.stream()
+                .map(order -> order.getPrice())
+                .collect(Collectors.toList());
+    }
+
+    public Double getPrice(List<Order> orders) {
+        return orders.stream()
+                .map(order -> order.getPrice())
+                .reduce(0d, (p1, p2) -> p1 + p2);
+    }
+
+    public List<OrderItem> getItems(List<Order> orders) {
+        return orders.stream()
+                .flatMap(order -> order.getItems().stream())
+                .collect(Collectors.toList());
+    }
 }
